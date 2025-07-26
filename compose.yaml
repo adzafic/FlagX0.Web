@@ -1,0 +1,16 @@
+﻿version: "3.8"
+services:
+  flagx0.web:
+    image: flagx0.web
+    build:
+      context: .
+      dockerfile: FlagX0.Web/Dockerfile
+  mysql-flagx0:
+    image: mysql:8.0
+    platform: linux/arm64  # Fuerza arquitectura ARM64
+    container_name: mysql-flagx0
+    ports:
+      - 4306:3306
+    environment:
+      - MYSQL_DATABASE=flagdb
+      - MYSQL_ROOT_PASSWORD=pass
